@@ -25,19 +25,19 @@ jobs:
         run: ls
 
       - name: Compile classes
-        run: javac -d ./bin -cp "./testresources/junit-platform-console-standalone-1.9.2.jar" ./src/YAML_Tutorial/IntClassTest.java ./src/YAML_Tutorial/StringClass.java ./test/YAML_Tutorial/IntClassTest.java ./test/YAML_Tutorial/StringClassTest.java
+        run: javac -d ./bin -cp "./testresources/junit-platform-console-standalone-1.9.2.jar" ./src/yaml_tutorial/IntClassTest.java ./src/yaml_tutorial/StringClass.java ./test/yaml_tutorial/IntClassTest.java ./test/yaml_tutorial/StringClassTest.java
 
       - name: List contents of bin directory after compile
-        run: ls ./bin/YAML_Tutorial
+        run: ls ./bin/yaml_tutorial
 
       # Run IntClassTest and create report
       - name: Run IntClassTest and create report
         run: |
           ls ./bin
-          java -jar ./testresources/junit-platform-console-standalone-1.9.2.jar -cp ./bin --select-class YAML_Tutorial.IntClassTest
+          java -jar ./testresources/junit-platform-console-standalone-1.9.2.jar -cp ./bin --select-class yaml_tutorial.IntClassTest
 
       # Run StringClassTest and create report
       - name: Run StringClassTest and create report
         run: |
           ls ./bin
-          java -jar ./testresources/junit-platform-console-standalone-1.9.2.jar -cp ./bin --select-class YAML_Tutorial.StringClassTest
+          java -jar ./testresources/junit-platform-console-standalone-1.9.2.jar -cp ./bin --select-class yaml_tutorial.StringClassTest
