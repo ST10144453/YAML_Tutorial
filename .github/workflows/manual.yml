@@ -1,0 +1,43 @@
+name: YAML Test File
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+
+      - name: List contents
+        run: ls
+
+      - name: Compile classes
+        run: javac -d ./bin -cp "./testresources/junit-platform-console-standalone-1.9.2.jar" ./src/YAML_Tutorial/IntClassTest.java ./src/YAML_Tutorial/StringClass.java ./test/YAML_Tutorial/IntClassTest.java ./test/YAML_Tutorial/StringClassTest.java
+
+      - name: List contents of bin directory after compile
+        run: ls ./bin/YAML_Tutorial
+
+      # Run IntClassTest and create report
+      - name: Run IntClassTest and create report
+        run: |
+          ls ./bin
+          java -jar ./testresources/junit-platform-console-standalone-1.9.2.jar -cp ./bin --select-class YAML_Tutorial.IntClassTest
+
+      # Run StringClassTest and create report
+      - name: Run StringClassTest and create report
+        run: |
+          ls ./bin
+          java -jar ./testresources/junit-platform-console-standalone-1.9.2.jar -cp ./bin --select-class YAML_Tutorial.StringClassTest
