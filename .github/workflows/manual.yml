@@ -25,7 +25,7 @@ jobs:
         run: ls
 
       - name: Compile classes
-        run: javac -d ./bin -cp "./testresources/junit-platform-console-standalone-1.9.2.jar" ./src/yaml_tutorial/IntClassTest.java ./src/yaml_tutorial/StringClass.java ./test/yaml_tutorial/IntClassTest.java ./test/yaml_tutorial/StringClassTest.java
+        run: javac -d ./bin -cp "./testresources/junit-platform-console-standalone-1.9.2.jar" ./src/yaml_tutorial/IntClass.java ./src/yaml_tutorial/StringClass.java ./test/yaml_tutorial/IntClassTest.java ./test/yaml_tutorial/StringClassTest.java
 
       - name: List contents of bin directory after compile
         run: ls ./bin/yaml_tutorial
